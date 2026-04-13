@@ -145,3 +145,6 @@ a {
   transform: translateY(-2px);
   color: #cfe6ff;
 }
+.media-card:hover {
+  outline: 4px solid red !important;
+}
