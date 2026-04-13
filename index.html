@@ -13,14 +13,13 @@
     }
 
     .wrap {
-      max-width: 900px;
-      margin: 80px auto;
-      padding: 24px;
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 20px;
     }
 
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 8px;
+    h1, h2 {
+      margin: 0 0 12px;
     }
 
     p {
@@ -31,7 +30,7 @@
     .card {
       background: #1e293b;
       padding: 20px;
-      border-radius: 12px;
+      border-radius: 14px;
       margin-top: 20px;
     }
 
@@ -42,9 +41,9 @@
 
     .media-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 16px;
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
     .media-card {
@@ -63,11 +62,10 @@
     .media-card img,
     .media-card video {
       width: 100%;
-      height: 260px;
+      height: 220px;
       object-fit: cover;
       display: block;
       transition: transform 320ms ease, filter 320ms ease;
-      transform-origin: center;
     }
 
     .media-card:hover img,
@@ -77,18 +75,18 @@
     }
 
     .media-caption {
-      padding: 14px 16px;
-    }
-
-    .media-caption h3 {
-      margin: 0 0 6px;
-      color: #e2e8f0;
-    }
-
-    .media-caption p {
-      margin: 0;
-      color: #94a3b8;
+      padding: 12px 14px;
       font-size: 0.95rem;
+      color: #94a3b8;
+    }
+
+    @media (hover: none) {
+      .media-card:hover,
+      .media-card:hover img,
+      .media-card:hover video {
+        transform: none;
+        filter: none;
+      }
     }
   </style>
 </head>
@@ -98,21 +96,41 @@
     <p>Welcome to my portfolio website.</p>
 
     <div class="card">
-      <h2>Projects</h2>
-      <p>Here is one of my project previews:</p>
+      <h2>My Photo Gallery</h2>
+      <p>Some moments and creative captures from my journey.</p>
+
+      <div class="media-grid">
+        <div class="media-card"><img src="assets/images/Image 1.jpg" alt="Gallery image 1"><div class="media-caption">Image 1</div></div>
+        <div class="media-card"><img src="assets/images/Image 2.jpg" alt="Gallery image 2"><div class="media-caption">Image 2</div></div>
+        <div class="media-card"><img src="assets/images/Image 3.jpg" alt="Gallery image 3"><div class="media-caption">Image 3</div></div>
+        <div class="media-card"><img src="assets/images/Image 4.jpg" alt="Gallery image 4"><div class="media-caption">Image 4</div></div>
+        <div class="media-card"><img src="assets/images/Image 5.jpg" alt="Gallery image 5"><div class="media-caption">Image 5</div></div>
+        <div class="media-card"><img src="assets/images/Image 6.jpg" alt="Gallery image 6"><div class="media-caption">Image 6</div></div>
+        <div class="media-card"><img src="assets/images/Image 7.jpg" alt="Gallery image 7"><div class="media-caption">Image 7</div></div>
+        <div class="media-card"><img src="assets/images/Image 8.JPG" alt="Gallery image 8"><div class="media-caption">Image 8</div></div>
+        <div class="media-card"><img src="assets/images/Image 9.jpg" alt="Gallery image 9"><div class="media-caption">Image 9</div></div>
+        <div class="media-card"><img src="assets/images/Image 10.jpg" alt="Gallery image 10"><div class="media-caption">Image 10</div></div>
+        <div class="media-card"><img src="assets/images/Image 11.jpg" alt="Gallery image 11"><div class="media-caption">Image 11</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Project Videos</h2>
+      <p>Short demos of my work.</p>
 
       <div class="media-grid">
         <div class="media-card">
-          <img src="assets/images/project1.jpg" alt="Project 1 screenshot" />
-
-          <video controls poster="assets/images/project1-cover.jpg">
-            <source src="assets/videos/demo1.mp4" type="video/mp4" />
+          <video controls>
+            <source src="assets/videos/Video 1.mp4" type="video/mp4" />
           </video>
+          <div class="media-caption">Video 1</div>
+        </div>
 
-          <div class="media-caption">
-            <h3>Project 1</h3>
-            <p>Short demo of my project. More projects coming soon.</p>
-          </div>
+        <div class="media-card">
+          <video controls>
+            <source src="assets/videos/Video 2.mp4" type="video/mp4" />
+          </video>
+          <div class="media-caption">Video 2</div>
         </div>
       </div>
     </div>
