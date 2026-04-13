@@ -242,6 +242,7 @@ a {
   border: 1px solid var(--line);
   background: var(--surface-strong);
   box-shadow: var(--shadow);
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
 .video-frame {
@@ -285,11 +286,18 @@ a {
   background: var(--surface-strong);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
 .photo-card img {
   width: 100%;
   height: auto;
+}
+
+.photo-card img,
+.video-frame {
+  transition: transform 320ms ease, filter 320ms ease;
+  transform-origin: center;
 }
 
 .photo-caption {
@@ -307,6 +315,17 @@ a {
   font-size: 0.95rem;
 }
 
+.photo-card:hover img,
+.video-card:hover .video-frame {
+  transform: scale(1.04);
+  filter: brightness(1.05);
+}
+
+.photo-card:hover,
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 70px rgba(76, 46, 28, 0.18);
+}
 .about-layout,
 .contact-section {
   display: grid;
@@ -348,6 +367,16 @@ a {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (hover: none) {
+  .photo-card:hover img,
+  .video-card:hover .video-frame,
+  .photo-card:hover,
+  .video-card:hover {
+    transform: none;
+    filter: none;
   }
 }
 

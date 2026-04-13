@@ -5,22 +5,116 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Steev Tom Alenchery | Portfolio</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background:#0f172a; color:#e2e8f0; }
-    .wrap { max-width: 800px; margin: 80px auto; padding: 24px; }
-    h1 { font-size: 2.2rem; margin-bottom: 8px; }
-    p { color:#cbd5e1; line-height: 1.6; }
-    .card { background:#1e293b; padding:20px; border-radius:12px; margin-top:20px; }
-    a { color:#38bdf8; text-decoration:none; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+
+    .wrap {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 24px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .media-card {
+      background: #0b1220;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #334155;
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    .media-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .media-card img,
+    .media-card video {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      transition: transform 320ms ease, filter 320ms ease;
+      transform-origin: center;
+    }
+
+    .media-card:hover img,
+    .media-card:hover video {
+      transform: scale(1.04);
+      filter: brightness(1.05);
+    }
+
+    .media-caption {
+      padding: 14px 16px;
+    }
+
+    .media-caption h3 {
+      margin: 0 0 6px;
+      color: #e2e8f0;
+    }
+
+    .media-caption p {
+      margin: 0;
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>Hi, I’m Steev Tom Alenchery👋</h1>
+    <h1>Hi, I’m Steev Tom Alenchery 👋</h1>
     <p>Welcome to my portfolio website.</p>
 
     <div class="card">
       <h2>Projects</h2>
-      <p>Coming soon. I’m currently building my first projects.</p>
+      <p>Here is one of my project previews:</p>
+
+      <div class="media-grid">
+        <div class="media-card">
+          <img src="assets/images/project1.jpg" alt="Project 1 screenshot" />
+
+          <video controls poster="assets/images/project1-cover.jpg">
+            <source src="assets/videos/demo1.mp4" type="video/mp4" />
+          </video>
+
+          <div class="media-caption">
+            <h3>Project 1</h3>
+            <p>Short demo of my project. More projects coming soon.</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="card">
