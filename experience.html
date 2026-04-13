@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experience | Steev Tom Alenchery</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    .wrap {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .block {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .black-screen {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease;
+      z-index: 9999;
+    }
+    .black-screen.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Experience</h1>
+
+    <div class="block">
+      <h2>Work Experience</h2>
+      <p>Add your work experience here.</p>
+    </div>
+
+    <div class="block">
+      <h2>Education</h2>
+      <p>Add your studies here.</p>
+    </div>
+
+    <div class="block">
+      <h2>Skills</h2>
+      <p>Add your key skills here.</p>
+    </div>
+  </div>
+
+  <div class="black-screen" id="blackScreen"></div>
+
+  <script>
+    window.addEventListener("load", () => {
+      // Auto-scroll to bottom
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+
+      // Wait for scroll to finish, show black for 2s, then return
+      setTimeout(() => {
+        const black = document.getElementById("blackScreen");
+        black.classList.add("show");
+
+        setTimeout(() => {
+          window.location.href = "index.html#video-grid";
+        }, 2000);
+      }, 2500);
+    });
+  </script>
+</body>
+</html>
