@@ -91,3 +91,20 @@ a {
 @media (max-width: 640px) {
   .wrap { padding: 12px; }
 }
+.media-card {
+  overflow: hidden;
+}
+
+.media-card img,
+.media-card video {
+  transition: transform 0.35s ease;
+  transform-origin: center;
+}
+
+.media-card:hover img {
+  transform: scale(1.08) !important;
+}
+
+.media-card:hover video {
+  transform: scale(1.04) !important;
+}
