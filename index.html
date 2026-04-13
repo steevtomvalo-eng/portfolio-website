@@ -52,10 +52,11 @@
       overflow: hidden;
       border: 1px solid #334155;
       transition: transform 220ms ease, box-shadow 220ms ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
     }
 
     .media-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
     }
 
@@ -65,13 +66,15 @@
       height: 220px;
       object-fit: cover;
       display: block;
-      transition: transform 320ms ease, filter 320ms ease;
+      transition: transform 250ms ease;
     }
 
-    .media-card:hover img,
+    .media-card:hover img {
+      transform: scale(1.02);
+    }
+
     .media-card:hover video {
-      transform: scale(1.04);
-      filter: brightness(1.05);
+      transform: none;
     }
 
     .media-caption {
@@ -88,40 +91,12 @@
         filter: none;
       }
     }
-      @media (hover: none) {
-  .media-card:hover,
-  .media-card:hover img,
-  .media-card:hover video {
-    transform: none;
-    filter: none;
-  }
-}
-/* Smooth scrolling/render stability */
-html, body {
-  background-color: #0f172a;
-}
 
-/* Reduce repaint flicker on cards/media */
-.media-card,
-.media-card img,
-.media-card video {
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-/* Optional: lighter shadow to reduce GPU stress */
-.media-card {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-}
-
-/* Avoid aggressive brightness repaints */
-.media-card:hover img,
-.media-card:hover video {
-  transform: scale(1.03);
-  filter: none;
-}
-    
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 14px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -161,17 +136,21 @@ html, body {
         </div>
 
         <div class="media-card">
-          <video controls>
+          <video controls preload="metadata">
             <source src="assets/videos/Video 2.mp4" type="video/mp4" />
           </video>
           <div class="media-caption">Video 2</div>
-                  <div class="media-card">
-          <video controls>
+        </div>
+
+        <div class="media-card">
+          <video controls preload="metadata">
             <source src="assets/videos/Video 3.mp4" type="video/mp4" />
           </video>
           <div class="media-caption">Video 3</div>
-                  <div class="media-card">
-          <video controls>
+        </div>
+
+        <div class="media-card">
+          <video controls preload="metadata">
             <source src="assets/videos/Video 4.mp4" type="video/mp4" />
           </video>
           <div class="media-caption">Video 4</div>
@@ -184,49 +163,49 @@ html, body {
       <p>Email: steevtom123@gmail.com</p>
     </div>
   </div>
-   <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const videos = document.querySelectorAll("video");
-        const noticeKey = "volume_notice_shown";
 
-        const toast = document.createElement("div");
-        toast.textContent = "Feel free to increase volume 🔊";
-        toast.style.position = "fixed";
-        toast.style.bottom = "20px";
-        toast.style.right = "20px";
-        toast.style.background = "rgba(15, 23, 42, 0.95)";
-        toast.style.color = "#e2e8f0";
-        toast.style.padding = "10px 14px";
-        toast.style.borderRadius = "10px";
-        toast.style.fontSize = "0.9rem";
-        toast.style.boxShadow = "0 8px 24px rgba(0,0,0,0.35)";
-        toast.style.zIndex = "9999";
-        toast.style.opacity = "0";
-        toast.style.transition = "opacity 220ms ease";
-        document.body.appendChild(toast);
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const videos = document.querySelectorAll("video");
+      const noticeKey = "volume_notice_shown";
 
-        const showToast = () => {
-          toast.style.opacity = "1";
-          setTimeout(() => {
-            toast.style.opacity = "0";
-          }, 2500);
-        };
+      const toast = document.createElement("div");
+      toast.textContent = "Feel free to increase volume 🔊";
+      toast.style.position = "fixed";
+      toast.style.bottom = "20px";
+      toast.style.right = "20px";
+      toast.style.background = "rgba(15, 23, 42, 0.95)";
+      toast.style.color = "#e2e8f0";
+      toast.style.padding = "10px 14px";
+      toast.style.borderRadius = "10px";
+      toast.style.fontSize = "0.9rem";
+      toast.style.boxShadow = "0 8px 24px rgba(0,0,0,0.35)";
+      toast.style.zIndex = "9999";
+      toast.style.opacity = "0";
+      toast.style.transition = "opacity 220ms ease";
+      document.body.appendChild(toast);
 
-        videos.forEach((video) => {
+      const showToast = () => {
+        toast.style.opacity = "1";
+        setTimeout(() => {
+          toast.style.opacity = "0";
+        }, 2500);
+      };
+
+      videos.forEach((video) => {
+        video.volume = 0.1;
+        video.addEventListener("loadedmetadata", () => {
           video.volume = 0.1;
+        });
 
-          video.addEventListener("loadedmetadata", () => {
-            video.volume = 0.1;
-          });
-
-          video.addEventListener("play", () => {
-            if (!localStorage.getItem(noticeKey)) {
-              showToast();
-              localStorage.setItem(noticeKey, "true");
-            }
-          });
+        video.addEventListener("play", () => {
+          if (!localStorage.getItem(noticeKey)) {
+            showToast();
+            localStorage.setItem(noticeKey, "true");
+          }
         });
       });
-    </script>
+    });
+  </script>
 </body>
 </html>
