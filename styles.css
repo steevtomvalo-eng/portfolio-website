@@ -284,3 +284,25 @@ a:hover { color: var(--accent-green); }
     filter: none;
   }
 }
+/* 1) Visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+.lightbox-close:focus-visible {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* 2) Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 3) Better text contrast for muted copy */
+p, li {
+  color: #cbd5e1; /* slightly brighter than old muted */
+}
